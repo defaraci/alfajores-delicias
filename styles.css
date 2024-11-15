@@ -1,0 +1,93 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('Imagen_fabricacion_alfajores.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+header {
+    background: linear-gradient(to right, #d2691e, #ff7f50);
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    text-align: center;
+}
+
+.chocolate-negro {
+    background-color: rgba(56, 42, 38, 0.8);
+}
+.chocolate-negro h3, 
+.chocolate-negro p {
+  color: white;}
+
+.maicena {
+    background-color: rgba(245, 222, 179, 0.8);
+}
+
+.chocolate-blanco {
+    background-color: rgba(255, 255, 240, 0.8);
+}
+
+.dietetico {
+    background-color: rgba(210, 250, 210, 0.8);
+}
+
+.mermelada {
+    background-color: rgba(255, 204, 204, 0.8);
+}
+
+.sin-tacc {
+    background-color: rgba(173, 216, 230, 0.8);
+}
+
+.card img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.grid-reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
