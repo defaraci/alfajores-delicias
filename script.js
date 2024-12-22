@@ -1,3 +1,11 @@
+/*
+Fecha de entrega 22/12/2024
+Alumno: David Ezequiel Faraci
+Proyecto Alfajores Delicias
+Talento Tech Adultos
+*/
+
+
 document.addEventListener("DOMContentLoaded", () => {
     // Productos disponibles
     const productos = [
@@ -23,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-    const tipoCambio = 380;  // Establecemos un tipo de cambio fijo de 1 USD = 380 ARS
+    const tipoCambio = 1025;  // Establecemos un tipo de cambio fijo de 1 USD = 1025 ARS
 
     const actualizarCarrito = () => {
         const listaCarrito = document.getElementById("lista-carrito");
