@@ -43,31 +43,11 @@ nav ul li a {
     text-align: center;
 }
 
-.chocolate-negro {
-    background-color: rgba(56, 42, 38, 0.8);
-}
-.chocolate-negro h3, 
-.chocolate-negro p {
-  color: white;}
-
-.maicena {
-    background-color: rgba(245, 222, 179, 0.8);
-}
-
-.chocolate-blanco {
-    background-color: rgba(255, 255, 240, 0.8);
-}
-
-.dietetico {
-    background-color: rgba(210, 250, 210, 0.8);
-}
-
-.mermelada {
-    background-color: rgba(255, 204, 204, 0.8);
-}
-
-.sin-tacc {
-    background-color: rgba(173, 216, 230, 0.8);
+/* Asegurarse de que las imágenes tengan las mismas dimensiones */
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Establece una altura fija */
+    object-fit: cover; /* Mantiene la proporción sin deformar */
 }
 
 .card img {
@@ -90,4 +70,38 @@ footer {
     color: white;
     padding: 1rem;
     text-align: center;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #d2691e;
+    border-color: #d2691e;
+}
+
+.btn-primary:hover {
+    background-color: #ff7f50;
+    border-color: #ff7f50;
+}
+
+.btn-outline-light {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-outline-light:hover {
+    background-color: #d2691e;
+    color: #fff;
+}
+
+#ver-carrito {
+    margin-left: 1rem;
+}
+
+#vaciar-carrito {
+    background-color: #f44336;
+    color: white;
 }
