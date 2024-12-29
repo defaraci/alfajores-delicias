@@ -64,25 +64,17 @@ Talento Tech Adultos
       </div>
     </section>
 
-    <section id="contacto" class="my-5">
-      <h2>Contacto</h2>
-      <form action="https://formspree.io/f/your-endpoint" method="POST">
-        <div class="mb-3">
-          <label for="name" class="form-label">Nombre</label>
-          <input type="text" id="name" name="name" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Correo Electrónico</label>
-          <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="message" class="form-label">Mensaje</label>
-          <textarea id="message" name="message" class="form-control" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </form>
-    </section>
-
+    <form id="contacto">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required />
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+      <label for="mensaje">Mensaje:</label>
+      <textarea id="mensaje" name="mensaje" required></textarea>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    <div id="form-mensaje" class="mt-3"></div>
+  
     <!-- Modal para el carrito -->
     <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
       <div class="modal-dialog">
