@@ -1,35 +1,50 @@
 /*
-Fecha de entrega 22/12/2024
+Fecha de entrega 29/12/2024
 Alumno: David Ezequiel Faraci
 Proyecto Alfajores Delicias
 Talento Tech Adultos
 */
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const tipoCambio = 10;
+    // Variables globales
+    const url = "https://api.coingecko.com/api/v3/simple/price?ids=usd&vs_currencies=ars"; //pagina donde saco cotización
+    let tipoCambio = 1025; // Valor que utilizara si surge un error
     const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let productos = [];
 
-    // Cargar productos desde el archivo JSON
+    // Obtener cotización
+    const obtenerCotizacion = async () => {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            tipoCambio = data.usd.ars;
+        } catch (error) {
+            //que no muestre nada
+        }
+    };
+
+    await obtenerCotizacion();
+
+    // Cargar productos desde JSON
     try {
         const response = await fetch("productos.json");
         productos = await response.json();
         cargarProductos(productos);
     } catch (error) {
-        console.error("Error al cargar los productos:", error);
+        //que no muestre nada
     }
 
+    // Función para cargar productos
     const cargarProductos = (productos) => {
         const cardsContainer = document.querySelector(".cards");
         cardsContainer.innerHTML = productos.map(producto => `
-            <div class="card col-md-4">
+            <div class="card col-md-3">
                 <img src="${producto.imagen}" alt="${producto.nombre}" class="card-img-top" />
                 <div class="card-body">
                     <h5 class="card-title">${producto.nombre}</h5>
-                    <p class="card-text">${producto.nombre}</p>
-                    <p class="card-text"><strong>Precio:</strong> $${producto.precio} ARS / $${(producto.precio / tipoCambio).toFixed(2)} USD</p>
+                    <p class="card-text">${producto.descripcion}</p>
+                    <p class="card-text"><strong>Preciox12Unid:</strong> $${producto.precio} ARS / $${(producto.precio / tipoCambio).toFixed(2)} USD</p>
                     <button class="btn btn-primary agregar" data-id="${producto.id}">Agregar al carrito</button>
-                    <button class="btn btn-secondary ampliar" data-id="${producto.id}">Ver más</button>
                 </div>
             </div>
         `).join("");
@@ -38,24 +53,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelectorAll(".agregar").forEach(btn => {
             btn.addEventListener("click", () => agregarAlCarrito(Number(btn.dataset.id)));
         });
-
-        document.querySelectorAll(".ampliar").forEach(btn => {
-            btn.addEventListener("click", (e) => ampliarDescripcion(e.target.dataset.id, productos));
-        });
     };
 
     const ampliarDescripcion = (id, productos) => {
         const producto = productos.find(p => p.id == id);
         const cardBody = document.querySelector(`.ampliar[data-id="${id}"]`).parentNode;
 
-        // Verificar si ya existe la descripción ampliada
-        const existeDescripcion = cardBody.querySelector(".descripcion-ampliada");
-        if (!existeDescripcion) {
-            const descripcionParrafo = document.createElement("p");
-            descripcionParrafo.className = "card-text descripcion-ampliada";
-            descripcionParrafo.textContent = producto.descripcionAmpliada;
-            cardBody.appendChild(descripcionParrafo);
-        }
     };
     
     const actualizarCarrito = () => {
@@ -94,12 +97,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
 
     document.querySelector(".cards").innerHTML = productos.map(producto => `
-        <div class="card col-md-4">
+        <div class="card col-md-3">
             <img src="${producto.imagen}" alt="${producto.nombre}" class="card-img-top" />
             <div class="card-body">
                 <h5 class="card-title">${producto.nombre}</h5>
                 <p class="card-text">${producto.descripcion}</p>
-                <p class="card-text"><strong>Precio:</strong> $${producto.precio} ARS / $${(producto.precio / tipoCambio).toFixed(2)} USD</p>
+                <p class="card-text"><strong>Precio x12Unid:</strong> $${producto.precio} ARS / $${(producto.precio / tipoCambio).toFixed(2)} USD</p>
                 <button class="btn btn-primary agregar" data-id="${producto.id}">Agregar al carrito</button>
             </div>
         </div>
